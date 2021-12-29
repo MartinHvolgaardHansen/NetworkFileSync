@@ -15,9 +15,9 @@ namespace NetworkFileSync
             this.packetSize = packetSize;
         }
 
-        public async Task BeginReceive(TcpClient client, Action<T> onPacketReceived)
+        public void BeginReceive(TcpClient client, Action<T> onPacketReceived)
         {
-            await Task.Run(() => 
+            Task.Run(() => 
             {
                 var stream = client.GetStream();
                 while (client.Connected) 
